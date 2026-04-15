@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Genre Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; 
+            background-color: #f0f4f8; 
+            color: #333;
+            text-align: center; 
+            padding: 20px;
+        }
+
+        button {
+            background-color: #007BFF; 
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            border-radius: 5px; 
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3; 
+        }
+
+        #movies, #details {
+            background-color: white;
+            max-width: 450px; /* Made this slightly wider to fit the new details nicely */
+            margin: 20px auto; 
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1); 
+            text-align: left; 
+        }
+
+        a {
+            text-decoration: none;
+            color: #e50914; 
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul {
+            line-height: 1.8; 
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🎬 Movie Genre Explorer</h1>
+
+    <h2>Select Genre</h2>
+
+    <button onclick="showMovies('action')">Action</button>
+    <button onclick="showMovies('comedy')">Comedy</button>
+    <button onclick="showMovies('horror')">Horror</button>
+    <button onclick="showMovies('scifi')">Sci-Fi</button>
+    <button onclick="showMovies('romance')">Romance</button>
+
+    <div id="movies">
+        <p><i>Select a genre above to see movies!</i></p>
+    </div>
+    
+    <div id="details">
+        <p><i>Click a movie name to see its details!</i></p>
+    </div>
+
+    <script>
+        // 1. Show the list of movies
+        function showMovies(genre) {
+            let content = "";
+
+            if (genre === "action") {
+                content = `
+                    <h3>💥 Action Movies</h3>
+                    <ul>
+                        <li><a href="#" onclick="showDetails('Avengers')">Avengers</a></li>
+                        <li><a href="#" onclick="showDetails('Batman')">Batman</a></li>
+                        <li><a href="#" onclick="showDetails('Gladiator')">Gladiator</a></li>
+                    </ul>`;
+            } 
+            else if (genre === "comedy") {
+                content = `
+                    <h3>😂 Comedy Movies</h3>
+                    <ul>
+                        <li><a href="#" onclick="showDetails('3 Idiots')">3 Idiots</a></li>
+                        <li><a href="#" onclick="showDetails('Hera Pheri')">Hera Pheri</a></li>
+                        <li><a href="#" onclick="showDetails('The Hangover')">The Hangover</a></li>
+                    </ul>`;
+            } 
+            else if (genre === "horror") {
+                content = `
+                    <h3>👻 Horror Movies</h3>
+                    <ul>
+                        <li><a href="#" onclick="showDetails('Conjuring')">Conjuring</a></li>
+                        <li><a href="#" onclick="showDetails('It')">It</a></li>
+                        <li><a href="#" onclick="showDetails('A Quiet Place')">A Quiet Place</a></li>
+                    </ul>`;
+            }
+            else if (genre === "scifi") {
+                content = `
+                    <h3>🚀 Sci-Fi Movies</h3>
+                    <ul>
+                        <li><a href="#" onclick="showDetails('Inception')">Inception</a></li>
+                        <li><a href="#" onclick="showDetails('Interstellar')">Interstellar</a></li>
+                        <li><a href="#" onclick="showDetails('The Matrix')">The Matrix</a></li>
+                    </ul>`;
+            }
+            else if (genre === "romance") {
+                content = `
+                    <h3>❤️ Romance Movies</h3>
+                    <ul>
+                        <li><a href="#" onclick="showDetails('Titanic')">Titanic</a></li>
+                        <li><a href="#" onclick="showDetails('The Notebook')">The Notebook</a></li>
+                        <li><a href="#" onclick="showDetails('La La Land')">La La Land</a></li>
+                    </ul>`;
+            }
+
+            document.getElementById("movies").innerHTML = content;
+            document.getElementById("details").innerHTML = "<p><i>Click a movie name to see its details!</i></p>"; 
+        }
+
+        // 2. Show the details based on the movie clicked
+        function showDetails(movieName) {
+            let detailsContent = "";
+
+            // ACTION
+            if (movieName === "Avengers") {
+                detailsContent = `
+                    <h3>Avengers</h3>
+                    <p><strong>Year:</strong> 2012</p>
+                    <p><strong>Director:</strong> Joss Whedon</p>
+                    <p><strong>Rating:</strong> ⭐ 8.0/10</p>
+                    <p><strong>Story:</strong> Earth's mightiest heroes must come together to fight as a team.</p>`;
+            }
+            else if (movieName === "Batman") {
+                detailsContent = `
+                    <h3>Batman (The Dark Knight)</h3>
+                    <p><strong>Year:</strong> 2008</p>
+                    <p><strong>Director:</strong> Christopher Nolan</p>
+                    <p><strong>Rating:</strong> ⭐ 9.0/10</p>
+                    <p><strong>Story:</strong> A wealthy vigilante fights crime and faces the Joker in Gotham City.</p>`;
+            }
+            else if (movieName === "Gladiator") {
+                detailsContent = `
+                    <h3>Gladiator</h3>
+                    <p><strong>Year:</strong> 2000</p>
+                    <p><strong>Director:</strong> Ridley Scott</p>
+                    <p><strong>Rating:</strong> ⭐ 8.5/10</p>
+                    <p><strong>Story:</strong> A betrayed Roman General seeks revenge against a corrupt emperor.</p>`;
+            }
+            
+            // COMEDY
+            else if (movieName === "3 Idiots") {
+                detailsContent = `
+                    <h3>3 Idiots</h3>
+                    <p><strong>Year:</strong> 2009</p>
+                    <p><strong>Director:</strong> Rajkumar Hirani</p>
+                    <p><strong>Rating:</strong> ⭐ 8.4/10</p>
+                    <p><strong>Story:</strong> Three engineering students navigate friendship and college pressures.</p>`;
+            }
+            else if (movieName === "Hera Pheri") {
+                detailsContent = `
+                    <h3>Hera Pheri</h3>
+                    <p><strong>Year:</strong> 2000</p>
+                    <p><strong>Director:</strong> Priyadarshan</p>
+                    <p><strong>Rating:</strong> ⭐ 8.1/10</p>
+                    <p><strong>Story:</strong> Three men find the answer to their money problems via a wrong number.</p>`;
+            }
+            else if (movieName === "The Hangover") {
+                detailsContent = `
+                    <h3>The Hangover</h3>
+                    <p><strong>Year:</strong> 2009</p>
+                    <p><strong>Director:</strong> Todd Phillips</p>
+                    <p><strong>Rating:</strong> ⭐ 7.7/10</p>
+                    <p><strong>Story:</strong> Three friends wake up from a bachelor party with no memory of the previous night.</p>`;
+            }
+            
+            // HORROR
+            else if (movieName === "Conjuring") {
+                detailsContent = `
+                    <h3>The Conjuring</h3>
+                    <p><strong>Year:</strong> 2013</p>
+                    <p><strong>Director:</strong> James Wan</p>
+                    <p><strong>Rating:</strong> ⭐ 7.5/10</p>
+                    <p><strong>Story:</strong> Paranormal investigators help a family terrorized by a dark presence.</p>`;
+            }
+            else if (movieName === "It") {
+                detailsContent = `
+                    <h3>It</h3>
+                    <p><strong>Year:</strong> 2017</p>
+                    <p><strong>Director:</strong> Andy Muschietti</p>
+                    <p><strong>Rating:</strong> ⭐ 7.3/10</p>
+                    <p><strong>Story:</strong> A group of bullied kids band together to destroy a shape-shifting monster.</p>`;
+            }
+            else if (movieName === "A Quiet Place") {
+                detailsContent = `
+                    <h3>A Quiet Place</h3>
+                    <p><strong>Year:</strong> 2018</p>
+                    <p><strong>Director:</strong> John Krasinski</p>
+                    <p><strong>Rating:</strong> ⭐ 7.5/10</p>
+                    <p><strong>Story:</strong> A family must live in silence to hide from blind creatures that hunt by sound.</p>`;
+            }
+
+            // SCI-FI
+            else if (movieName === "Inception") {
+                detailsContent = `
+                    <h3>Inception</h3>
+                    <p><strong>Year:</strong> 2010</p>
+                    <p><strong>Director:</strong> Christopher Nolan</p>
+                    <p><strong>Rating:</strong> ⭐ 8.8/10</p>
+                    <p><strong>Story:</strong> A thief enters the dreams of others to steal their secrets.</p>`;
+            }
+            else if (movieName === "Interstellar") {
+                detailsContent = `
+                    <h3>Interstellar</h3>
+                    <p><strong>Year:</strong> 2014</p>
+                    <p><strong>Director:</strong> Christopher Nolan</p>
+                    <p><strong>Rating:</strong> ⭐ 8.7/10</p>
+                    <p><strong>Story:</strong> Astronauts travel through a wormhole to find a new home for humanity.</p>`;
+            }
+            else if (movieName === "The Matrix") {
+                detailsContent = `
+                    <h3>The Matrix</h3>
+                    <p><strong>Year:</strong> 1999</p>
+                    <p><strong>Director:</strong> The Wachowskis</p>
+                    <p><strong>Rating:</strong> ⭐ 8.7/10</p>
+                    <p><strong>Story:</strong> A computer hacker learns the shocking truth about his reality.</p>`;
+            }
+
+            // ROMANCE
+            else if (movieName === "Titanic") {
+                detailsContent = `
+                    <h3>Titanic</h3>
+                    <p><strong>Year:</strong> 1997</p>
+                    <p><strong>Director:</strong> James Cameron</p>
+                    <p><strong>Rating:</strong> ⭐ 7.9/10</p>
+                    <p><strong>Story:</strong> A romance blooms between two passengers on an ill-fated ship.</p>`;
+            }
+            else if (movieName === "The Notebook") {
+                detailsContent = `
+                    <h3>The Notebook</h3>
+                    <p><strong>Year:</strong> 2004</p>
+                    <p><strong>Director:</strong> Nick Cassavetes</p>
+                    <p><strong>Rating:</strong> ⭐ 7.8/10</p>
+                    <p><strong>Story:</strong> A poor young man falls in love with a rich young woman, but they are separated.</p>`;
+            }
+            else if (movieName === "La La Land") {
+                detailsContent = `
+                    <h3>La La Land</h3>
+                    <p><strong>Year:</strong> 2016</p>
+                    <p><strong>Director:</strong> Damien Chazelle</p>
+                    <p><strong>Rating:</strong> ⭐ 8.0/10</p>
+                    <p><strong>Story:</strong> A jazz pianist and an aspiring actress fall in love while pursuing their dreams.</p>`;
+            }
+
+            document.getElementById("details").innerHTML = detailsContent;
+        }
+    </script>
+
+</body>
+</html>
